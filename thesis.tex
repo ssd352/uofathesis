@@ -1,0 +1,167 @@
+% To generate PDF output, run the following commands:
+% pdflatex thesis
+% bibtex thesis
+% pdflatex thesis
+% makeindex thesis
+% pdflatex thesis
+% pdflatex thesis
+%
+% Or just use:
+% latexmk --pdf thesis
+
+\documentclass[12pt,openany,twoside]{report}
+
+% PAGE LAYOUT
+\textheight 8.5in
+\textwidth 5.5in 
+\topmargin -0.5in
+\oddsidemargin 0.5in
+\evensidemargin 0.5in
+
+\usepackage{bm}
+\usepackage{float}
+\usepackage{mathesis}
+\usepackage{multicol}
+\usepackage{verbatim}
+\usepackage{setspace}
+\usepackage{cancel}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+%\usepackage{asymptote}
+\usepackage{fancyhdr}
+
+% Uncomment next line to build PDF\A.
+%\usepackage[a-1b]{pdfx}
+
+\usepackage{hyperref}
+\usepackage{colordvi,color}
+\usepackage{hypercitebracket}
+\usepackage{makeidx}
+%\usepackage{showlabels}
+
+\def\ThesisTitle{The Title of the Thesis}
+\def\ThesisAuthor{Author's Name}
+
+\definecolor{heavyred}{cmyk}{0,1,1,0.25}
+\hypersetup{
+  pdftitle=\ThesisTitle,
+  pdfpagemode=UseOutlines,
+  colorlinks=true,
+  allcolors=heavyred,
+  breaklinks=true,
+  pdfauthor=\ThesisAuthor,
+  pdfpagetransition=Dissolve
+}
+
+\renewcommand{\baselinestretch}{1.37}
+
+\def\hyperindex#1{\index{#1}\hypertarget{#1}}
+\def\In#1{\hyperindex{#1}{\emph{#1}}}
+
+\bibliographystyle{rmp2}
+
+\makeindex
+
+\begin{document}
+
+\def\thechapter       {\arabic{chapter}}
+\def\thesection       {\arabic{chapter}.\Alph{section}}
+\def\thefigure        {\arabic{chapter}.\arabic{figure}}
+\def\theequation      {\arabic{chapter}.\arabic{equation}}
+
+\thispagestyle{empty}
+
+\title{A Math Thesis about Math}
+
+\author{A. Student}
+\convocationdate{YEAR}
+\degree{Master of Science}
+
+\department{Department of Mathematical and Statistical Sciences}
+% If you have a specialization, enter it here
+\fieldofstudy{Mathematics}
+
+\pagenumbering{roman}
+
+\title{\ThesisTitle}
+\author{\ThesisAuthor}
+
+\titlepage
+
+\begin{abstract}
+Witty and concise abstract.
+\end{abstract}
+
+\thispagestyle{plain}
+
+%\begin{preface}
+%\end{preface}
+
+\begin{dedication}
+\vspace*{5cm}
+\begin{center}
+\Large
+Dedicated with thanks to the reader.
+\end{center}
+\end{dedication}
+
+\doublespacing
+
+\begin{acknowledgement}
+Wherein people are acknowledged.
+\end{acknowledgement}
+
+\tableofcontents
+\listoffigures
+
+\chapter{Introduction}
+\pagenumbering{arabic}
+
+See Table~\ref{egtable}.
+
+\begin{table}[htbp]
+  \begin{center}
+    \begin{tabular}{|p{4cm}|p{4cm}|}
+      \hline
+      Spring 20xx & Fall 20xx \\
+      \hline
+      \hline
+      if submitting between Oct 1--April 15
+      & if submitting between April 16--Sept 30\\
+      \hline
+    \end{tabular}
+    \caption{Convocation date}
+    \label{egtable}
+  \end{center}
+\end{table}
+
+\chapter{A Chapter}
+Unfortunately, \citename{Kolmogorov41} beat us to it:
+the material in this work was all known before \cite{Kolmogorov41}.
+
+\section{So we don't get to graduate}
+Which is too bad!
+
+\chapter{Another Chapter}
+Where we talk about \In{other things}.
+
+
+\chapter{Conclusion}
+Conclude!
+
+\clearpage
+\bibliography{refs}
+\hypertarget{Bibliography}{}
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Index}
+\hypertarget{Index}{}
+\printindex
+
+\end{document}
